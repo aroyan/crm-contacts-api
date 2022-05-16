@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "REST API CRM, LinkedIn Learning",
   "main": "./src/index.js",
-  "scripts": {
-    "start": "nodemon ./index.js --exec babel-node -e js"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
