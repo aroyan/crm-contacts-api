@@ -3,6 +3,7 @@ import routes from "./src/routes/crmRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import "dotenv/config";
+import serverless from "serverless-http";
 
 const app = express();
 const PORT = 4000;
