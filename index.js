@@ -2,13 +2,14 @@ import express from "express";
 import routes from "./src/routes/crmRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import "dotenv/config";
 
 const app = express();
 const PORT = 4000;
 
 // mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/CRMdb", {
+mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
