@@ -3,6 +3,7 @@ import routes from "./routes/crmRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import "dotenv/config";
+import { path } from "express/lib/application";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
