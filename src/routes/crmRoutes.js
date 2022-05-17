@@ -12,8 +12,8 @@ const routes = (app) => {
     // Get all contacts
     .get((req, res, next) => {
       // Middleware
-      console.log(`Request from : ${req.originalUrl}`);
-      console.log(`Request type : ${req.method}`);
+      // console.log(`Request from : ${req.originalUrl}`);
+      // console.log(`Request type : ${req.method}`);
       next();
     }, getContacts)
     // Add contact
