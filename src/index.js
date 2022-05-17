@@ -2,11 +2,15 @@ import express from "express";
 import routes from "./routes/crmRoutes";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
+import cors from "cors";
 import "dotenv/config";
 import { path } from "express/lib/application";
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+// Enable CORS
+app.use(cors());
 
 // mongoose connection
 mongoose.Promise = global.Promise;
