@@ -27,6 +27,10 @@ const routes = (app) => {
     .put(updateContact)
     // Delete specific contact
     .delete(deleteContact);
+
+  app.route("/api").get((req, res) => {
+    res.send("Tesing new route");
+  });
 };
 
 export default routes;
