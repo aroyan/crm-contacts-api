@@ -25,9 +25,11 @@ app.use(express.static("public"));
 
 // Index homepage
 app.get("/", (req, res) => {
-  res.send(`Node express server running on server ${PORT}`);
+  res.sendFile("./views/index.html", { root: __dirname });
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(
+    `Server is running on port ${PORT} \nOpen http://localhost:${PORT}`
+  );
 });

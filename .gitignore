@@ -1,3 +1,11 @@
+# Node
 node_modules
+
+#ENV
 .env
+
+# Build
 build
+
+# Others
+rest.http
