@@ -5,8 +5,8 @@
   "main": "./src/index.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/index.js",
-    "start": "node build/index.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "build": "babel src -d build",
+    "start": "node build/index.js"
   },
   "keywords": [],
   "author": "",
