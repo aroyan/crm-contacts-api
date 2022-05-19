@@ -22,15 +22,13 @@ const routes = (app) => {
   app
     .route("/contact/:contactID")
     // Get specific contact
-    .get(getContactsWithID)
+    .get((req, res, next) => {
+      next();
+    }, getContactsWithID)
     // Update specific contact
     .put(updateContact)
     // Delete specific contact
     .delete(deleteContact);
-
-  app.route("/api").get((req, res) => {
-    res.send("Tesing new route");
-  });
 };
 
 export default routes;

@@ -26,9 +26,9 @@ export const getContacts = (req, res) => {
 export const getContactsWithID = (req, res) => {
   Contact.findById(req.params.contactID, (err, contact) => {
     if (err) {
-      res.send(err);
+      return res.send(err);
     }
-    res.json(contact);
+    return res.json(contact);
   });
 };
 
