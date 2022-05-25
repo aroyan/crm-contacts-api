@@ -7,8 +7,11 @@ import {
 } from "../controllers/crmController";
 
 const routes = (app) => {
+  app.route("/api").get((req, res) => {
+    res.send({ contacts_list: `/api/contacts` });
+  });
   app
-    .route("/contact")
+    .route("/api/contacts")
     // Get all contacts
     .get((req, res, next) => {
       // Middleware
@@ -20,7 +23,7 @@ const routes = (app) => {
     .post(addNewContact);
 
   app
-    .route("/contact/:contactID")
+    .route("/api/contacts/:contactID")
     // Get specific contact
     .get((req, res, next) => {
       next();
