@@ -15,12 +15,16 @@ export const addNewContact = (req, res) => {
 };
 
 export const getContacts = (req, res) => {
+  const { page } = req.query || 0;
+
   Contact.find({}, (err, contact) => {
     if (err) {
       res.send(err);
     }
-    res.json(contact);
-  });
+    res.json({ total: contact.length, page, contact });
+  })
+    .skip(page * 5)
+    .limit(5);
 };
 
 export const getContactsWithID = (req, res) => {
