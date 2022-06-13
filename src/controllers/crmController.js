@@ -15,16 +15,28 @@ export const addNewContact = (req, res) => {
 };
 
 export const getContacts = (req, res) => {
-  const { page } = req.query || 0;
+  const { page = 0, limit = 5 } = req.query;
 
-  Contact.find({}, (err, contact) => {
+  Contact.find({}, (err, contacts) => {
     if (err) {
       res.send(err);
+    } else {
+      Contact.estimatedDocumentCount({}).exec((err, totalItems) => {
+        if (err) {
+          throw new Error(err);
+        }
+        const totalPages = Math.floor(totalItems / limit);
+        res.status(200).json({
+          totalItems,
+          totalPages,
+          page,
+          contacts,
+        });
+      });
     }
-    res.json({ total: contact.length, page, contact });
   })
-    .skip(page * 5)
-    .limit(5);
+    .skip(page * limit)
+    .limit(limit);
 };
 
 export const getContactsWithID = (req, res) => {
@@ -58,3 +70,5 @@ export const deleteContact = (req, res) => {
     res.json({ message: "Deleted succesfully" });
   });
 };
+
+// If you have millions of data make sure to use `estimatedDocumentCount` instead of `countDocuments`
