@@ -74,7 +74,7 @@ export const deleteContact = (req, res) => {
 // If you have millions of data make sure to use `estimatedDocumentCount` instead of `countDocuments`
 
 export const searchContact = (req, res) => {
-  const { q, page = 0, limit = 5 } = req.query;
+  const { q = "", page = 0, limit = 5 } = req.query;
   Contact.find(
     { firstName: { $regex: new RegExp(q, "i") } },
     (err, contact) => {
@@ -83,6 +83,8 @@ export const searchContact = (req, res) => {
       }
       if (!contact.length) {
         res.json({ error: `${q} not found` });
+      } else if (q === "") {
+        res.send("Please enter a search query");
       } else {
         res.json({ total: contact.length, contact });
       }
