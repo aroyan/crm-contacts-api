@@ -4,6 +4,7 @@ import {
   getContacts,
   getContactsWithID,
   updateContact,
+  searchContact,
 } from "../controllers/crmController";
 
 const routes = (app) => {
@@ -32,6 +33,8 @@ const routes = (app) => {
     .put(updateContact)
     // Delete specific contact
     .delete(deleteContact);
+
+  app.route("/api/search").get(searchContact);
 };
 
 export default routes;
